@@ -18,7 +18,7 @@ public class CustomUserService implements UserService {
 
     @Override
     public User signUp(User user) {
-        User dbUser = userRepository.findByEmail(user.getEmail());
+        User dbUser = userRepository.findByUsername(user.getUsername());
         if (dbUser != null) {
             throw new RuntimeException("User already exist.");
         }
