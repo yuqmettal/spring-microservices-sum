@@ -29,8 +29,8 @@ public class User implements Serializable {
 	@Column(length = 60)
 	private String password;
 	private Boolean enabled;
-	private String nombre;
-	private String apellido;
+	private String firstName;
+	private String lastName;
 	
 	@Column(unique = true, length = 100)
 	private String email;
@@ -39,16 +39,16 @@ public class User implements Serializable {
 	@JoinTable(name = "user_roles", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"), uniqueConstraints = {@UniqueConstraint(columnNames = {"user_id", "role_id"})})
 	private List<Role> roles;
 	
-	private Integer intentos;
+	private Integer intents;
 
 	private static final long serialVersionUID = 4002221912401133094L;
 
-	public Integer getIntentos() {
-		return intentos;
+	public Integer getIntents() {
+		return intents;
 	}
 
-	public void setIntentos(Integer intentos) {
-		this.intentos = intentos;
+	public void setIntents(Integer intents) {
+		this.intents = intents;
 	}
 
 	public List<Role> getRoles() {
@@ -91,20 +91,20 @@ public class User implements Serializable {
 		this.enabled = enabled;
 	}
 
-	public String getNombre() {
-		return nombre;
+	public String getFirstName() {
+		return firstName;
 	}
 
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
 	}
 
-	public String getApellido() {
-		return apellido;
+	public String getLastName() {
+		return lastName;
 	}
 
-	public void setApellido(String apellido) {
-		this.apellido = apellido;
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
 	}
 
 	public String getEmail() {
