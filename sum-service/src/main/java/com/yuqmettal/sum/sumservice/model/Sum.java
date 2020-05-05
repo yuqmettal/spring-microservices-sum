@@ -2,6 +2,7 @@ package com.yuqmettal.sum.sumservice.model;
 
 import java.util.Objects;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -16,7 +17,10 @@ public class Sum {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+
+    @Column(name = "first_number")
     private int firstNumber;
+    @Column(name = "second_number")
     private int secondNumber;
     @Transient
     private int total;
