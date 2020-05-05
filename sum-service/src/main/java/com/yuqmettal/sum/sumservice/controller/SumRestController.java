@@ -53,7 +53,6 @@ public class SumRestController {
 
     @GetMapping
     public ResponseEntity<CollectionModel<EntityModel<Sum>>> getAllSums(@RequestParam("userName") String userName) {
-        log.info(userName);
         List<Sum> sums = (List<Sum>) sumRepository.findByUserName(userName);
         Link links[] = { linkTo(methodOn(SumRestController.class).getAllSums(userName)).withRel("getAllSums") };
         List<EntityModel<Sum>> list = new ArrayList<EntityModel<Sum>>();
