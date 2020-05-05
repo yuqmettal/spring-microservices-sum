@@ -14,8 +14,6 @@ FROM openjdk:11
 
 WORKDIR /app
 
-RUN ls
-
 COPY --from=MAVEN_BUILD /build/target/config-server-0.0.1-SNAPSHOT.jar /app/
 
 
