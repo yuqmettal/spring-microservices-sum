@@ -4,7 +4,6 @@ import java.util.List;
 
 import com.yuqmettal.sum.usersservice.entity.Role;
 import com.yuqmettal.sum.usersservice.entity.User;
-import com.yuqmettal.sum.usersservice.repository.RoleRepository;
 import com.yuqmettal.sum.usersservice.repository.UserRestRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,9 +17,6 @@ public class CustomUserService implements UserService {
     @Autowired
     private UserRestRepository userRepository;
 
-    @Autowired
-    private RoleRepository roleRepository;
-
     @Bean
 	public BCryptPasswordEncoder passwordEncoder() {
 		return new BCryptPasswordEncoder();
@@ -32,8 +28,6 @@ public class CustomUserService implements UserService {
         if (dbUser != null) {
             throw new RuntimeException("User already exist.");
         }
-        List<Role> userRoles = roleRepository.findByName("ROLE_USER");
-        user.setRoles(userRoles);
         user.setEnabled(true);
         user.setPassword(passwordEncoder().encode(user.getPassword()));
         return userRepository.save(user);
