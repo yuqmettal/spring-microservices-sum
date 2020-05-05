@@ -5,7 +5,7 @@ import java.util.List;
 import com.yuqmettal.sum.usersservice.entity.Role;
 import com.yuqmettal.sum.usersservice.entity.User;
 import com.yuqmettal.sum.usersservice.repository.RoleRepository;
-import com.yuqmettal.sum.usersservice.repository.UserRepository;
+import com.yuqmettal.sum.usersservice.repository.UserRestRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -16,7 +16,7 @@ import org.springframework.stereotype.Service;
 public class CustomUserService implements UserService {
 
     @Autowired
-    private UserRepository userRepository;
+    private UserRestRepository userRepository;
 
     @Autowired
     private RoleRepository roleRepository;
@@ -34,6 +34,7 @@ public class CustomUserService implements UserService {
         }
         List<Role> userRoles = roleRepository.findByName("ROLE_USER");
         user.setRoles(userRoles);
+        user.setEnabled(true);
         user.setPassword(passwordEncoder().encode(user.getPassword()));
         return userRepository.save(user);
     }
