@@ -22,6 +22,9 @@ public class Sum {
     private int firstNumber;
     @Column(name = "second_number")
     private int secondNumber;
+    @Column(name = "user_name")
+    private String userName;
+
     @Transient
     private int total;
 
@@ -46,6 +49,14 @@ public class Sum {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getUserName() {
+        return this.userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
     public int getFirstNumber() {
