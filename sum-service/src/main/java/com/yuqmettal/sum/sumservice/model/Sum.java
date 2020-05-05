@@ -76,7 +76,7 @@ public class Sum {
     }
     
     public int getTotal() {
-        return this.total;
+        return this.firstNumber + this.secondNumber;
     }
     
 
