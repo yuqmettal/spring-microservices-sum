@@ -2,7 +2,6 @@ package com.yuqmettal.sum.proxyserver.config;
 
 import java.util.Arrays;
 
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.context.annotation.Bean;
@@ -24,9 +23,6 @@ import org.springframework.web.filter.CorsFilter;
 @EnableResourceServer
 public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
 	
-	@Value("${config.security.oauth.jwt.key}")
-	private String jwtKey;
-	
 	@Override
 	public void configure(HttpSecurity http) throws Exception {
 		http
@@ -45,7 +41,7 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
 	@Bean
 	public JwtAccessTokenConverter accessTokenConverter() {
 		JwtAccessTokenConverter tokenConverter = new JwtAccessTokenConverter();
-		tokenConverter.setSigningKey(jwtKey);
+		tokenConverter.setSigningKey("73eeac3fa1a0ce48f381ca1e6d71f077");
 		return tokenConverter;
 	}
 	
