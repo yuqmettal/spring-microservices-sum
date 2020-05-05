@@ -31,8 +31,6 @@ import org.springframework.web.util.UriComponentsBuilder;
 @RestController
 @RequestMapping("/sums")
 public class SumRestController {
-
-	private static Logger log = LoggerFactory.getLogger(SumRestController.class);
     
     @Autowired
     private SumRepository sumRepository;
