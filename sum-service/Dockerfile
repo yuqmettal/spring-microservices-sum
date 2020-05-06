@@ -6,6 +6,6 @@ WORKDIR /build/
 RUN mvn package -DskipTests
 FROM openjdk:11
 WORKDIR /app
-EXPOSE 9100
+EXPOSE 8083
 COPY --from=MAVEN_BUILD /build/target/sum-service-0.0.1-SNAPSHOT.jar /app/
 ENTRYPOINT ["java", "-jar", "sum-service-0.0.1-SNAPSHOT.jar"]
