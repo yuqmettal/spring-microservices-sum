@@ -6,6 +6,5 @@ WORKDIR /build/
 RUN mvn package
 FROM openjdk:11
 WORKDIR /app
-EXPOSE 8761
-COPY --from=MAVEN_BUILD /build/target/discover-server-0.0.1-SNAPSHOT.jar /app/
-ENTRYPOINT ["java", "-jar", "discover-server-0.0.1-SNAPSHOT.jar"]
+COPY --from=MAVEN_BUILD /build/target/users-service-0.0.1-SNAPSHOT.jar /app/
+ENTRYPOINT ["java", "-jar", "users-service-0.0.1-SNAPSHOT.jar"]
