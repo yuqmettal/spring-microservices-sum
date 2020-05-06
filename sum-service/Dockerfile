@@ -6,6 +6,5 @@ WORKDIR /build/
 RUN mvn package
 FROM openjdk:11
 WORKDIR /app
-EXPOSE 8090
-COPY --from=MAVEN_BUILD /build/target/proxy-server-0.0.1-SNAPSHOT.jar /app/
-ENTRYPOINT ["java", "-jar", "proxy-server-0.0.1-SNAPSHOT.jar"]
+COPY --from=MAVEN_BUILD /build/target/sum-service-0.0.1-SNAPSHOT.jar /app/
+ENTRYPOINT ["java", "-jar", "sum-service-0.0.1-SNAPSHOT.jar"]
