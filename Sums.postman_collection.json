@@ -1,0 +1,218 @@
+{
+	"info": {
+		"_postman_id": "096ee8ff-88bc-451d-8858-6d47b9fe6d23",
+		"name": "Sums",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Login",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "{{client_secret}}",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "{{client_id}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "username",
+							"value": "{{admin_username}}",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "{{admin_password}}",
+							"type": "text"
+						},
+						{
+							"key": "grant_type",
+							"value": "password",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{host}}/api/security/oauth/token",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"security",
+						"oauth",
+						"token"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Register user",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"username\": \"<username>\",\n\t\"password\": \"<password>\",\n\t\"email\": \"<email>\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/api/users/auth/signup",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"users",
+						"auth",
+						"signup"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Sum numbers",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1ODg3ODM3MjIsInVzZXJfbmFtZSI6ImFkbWluIiwiYXV0aG9yaXRpZXMiOlsiUk9MRV9BRE1JTiIsIlJPTEVfVVNFUiJdLCJqdGkiOiIwM2RmY2Y3Zi00ZjFiLTQ1OWItOGNlNS00Mzk0ZDE1OTY5MzciLCJjbGllbnRfaWQiOiJyYzg1WGxpNDM3UWs1UEJPY2o1aHhJT2YxVmlXS1dWQnVCYktraVZvIiwic2NvcGUiOlsicmVhZCIsIndyaXRlIl19.0UvyAxI4P9IwW4Td18Z1kfYGMB-HBmH-2hFVgqG-P5A",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"firstNumber\": 1,\n\t\"secondNumber\": 1\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/api/sum/sums",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"sum",
+						"sums"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "List sum history",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1ODg3ODM3MjIsInVzZXJfbmFtZSI6ImFkbWluIiwiYXV0aG9yaXRpZXMiOlsiUk9MRV9BRE1JTiIsIlJPTEVfVVNFUiJdLCJqdGkiOiIwM2RmY2Y3Zi00ZjFiLTQ1OWItOGNlNS00Mzk0ZDE1OTY5MzciLCJjbGllbnRfaWQiOiJyYzg1WGxpNDM3UWs1UEJPY2o1aHhJT2YxVmlXS1dWQnVCYktraVZvIiwic2NvcGUiOlsicmVhZCIsIndyaXRlIl19.0UvyAxI4P9IwW4Td18Z1kfYGMB-HBmH-2hFVgqG-P5A",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{host}}/api/sum/sums",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"sum",
+						"sums"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "4f25dd00-d521-4383-8605-f8754aa331a2",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "408b3fa6-144f-45b2-996b-76e82014c129",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "e41e46ab-25ed-48ce-98f5-75cf0cd41b77",
+			"key": "host",
+			"value": "localhost:8090",
+			"type": "string"
+		},
+		{
+			"id": "f2f81f51-279e-43e8-9ac4-b0f6569b43e7",
+			"key": "client_id",
+			"value": "rc85Xli437Qk5PBOcj5hxIOf1ViWKWVBuBbKkiVo",
+			"type": "string"
+		},
+		{
+			"id": "0e912b84-bfce-4fbd-b1ac-ee6b6cd16116",
+			"key": "client_secret",
+			"value": "LrfKii1eUlaLlvRbipjDlieMAjAGKZ93rZBqWvD4WKl4LdnhQYnxjce6PSjScVEBogXMjkGD97L6EeXGZr8q55Wf6bd0j3GkHPlOjOEdUnrNfz2dFp3QRhHNpr8fRNTG",
+			"type": "string"
+		},
+		{
+			"id": "e2bd03b1-8c2f-45f3-88e8-467b35989dd6",
+			"key": "admin_username",
+			"value": "admin",
+			"type": "string"
+		},
+		{
+			"id": "06ccb96d-27de-4358-8d3d-40b09800e591",
+			"key": "admin_password",
+			"value": "12345",
+			"type": "string"
+		}
+	],
+	"protocolProfileBehavior": {}
+}

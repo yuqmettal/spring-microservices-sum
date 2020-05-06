@@ -25,6 +25,14 @@ _Puedes desplegar el proyecto con docker compose_
 docker-compose up
 ```
 
+## Uso
+
+Se ha agregado una coleccion de Postman para hacer las peticiones:
+
+```
+Sums.postman_collection.json
+```
+
 ## Construido con 🛠️
 
 
