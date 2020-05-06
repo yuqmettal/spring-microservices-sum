@@ -2,7 +2,7 @@ version: '3.7'
 
 services:
 
-  users-database:
+  service-database:
     image: postgres:latest
     ports:
       - "5432:5432"
@@ -10,18 +10,7 @@ services:
     networks:
       - sum-services-networks
     environment: 
-      POSTGRES_DB: db_users
-      POSTGRES_PASSWORD: d2cb1d0af058c7521c27a3aa5ad78dfd
-
-  sums-database:
-    image: postgres:latest
-    ports:
-      - "5433:5432"
-    restart: always
-    networks:
-      - sum-services-networks
-    environment: 
-      POSTGRES_DB: db_sums
+      POSTGRES_DB: sum_database
       POSTGRES_PASSWORD: d2cb1d0af058c7521c27a3aa5ad78dfd
 
   config-server:
@@ -42,13 +31,15 @@ services:
 
   users-service:
     image: myuquilima/users-service
+    ports:
+      - "8082:8082"
     restart: always
     networks:
       - sum-services-networks
     depends_on:
       - config-server
       - discover-server
-      - users-database
+      - service-database
 
   oauth-server:
     image: myuquilima/oauth-server
@@ -63,14 +54,16 @@ services:
       - users-service
 
   sum-service:
-    image: myuquilima/oauth-server
+    image: myuquilima/sum-service
+    ports:
+      - "8083:8083"
     restart: always
     networks:
       - sum-services-networks
     depends_on:
       - config-server
       - discover-server
-      - sums-database
+      - service-database
       - oauth-server
 
   proxy-server:
